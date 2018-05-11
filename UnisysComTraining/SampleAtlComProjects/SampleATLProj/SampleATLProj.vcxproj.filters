@@ -34,6 +34,15 @@
     <ClCompile Include="FirstComponent.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MathComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EventComponent.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="NativeConsumer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -54,6 +63,18 @@
     <ClInclude Include="FirstComponent.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="MathComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="_IEventComponentEvents_CP.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EventComponent.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="NativeConsumer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SampleATLProj.rc">
@@ -71,6 +92,15 @@
       <Filter>Source Files</Filter>
     </None>
     <None Include="FirstComponent.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="MathComponent.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="EventComponent.rgs">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="NativeConsumer.rgs">
       <Filter>Resource Files</Filter>
     </None>
   </ItemGroup>

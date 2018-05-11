@@ -18,6 +18,37 @@ interface IFirstComponent : IDispatch{
 	[id(1)] HRESULT AddNumbers([in] VARIANT theArray, [out] LONG* lResult);
 };
 [
+	object,
+	uuid(6FC17947-0D56-4B63-A337-4783EC36843F),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IMathComponent : IDispatch{
+	[id(1)] HRESULT AddMethod([in] float fVal1, [in]float fVal2, [out] float* fRes);
+	[id(2)] HRESULT SubMethod([in] float fVal1, [in]float fVal2, [out] float* fRes);
+};
+[
+	object,
+	uuid(E7212671-EECC-459A-9155-2ECE20423C37),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IEventComponent : IDispatch{
+	[id(1)] HRESULT InvokeMethod([in] BSTR strCaller);
+};
+[
+	object,
+	uuid(F1A374B6-FFA3-4923-B27B-7359E4BE375C),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface INativeConsumer : IDispatch{
+	[id(1)] HRESULT InvokeNativeMethod();
+};
+[
 	uuid(33F0CD1F-49B5-480C-8F46-E3208FD6B198),
 	version(1.0),
 ]
@@ -31,5 +62,39 @@ library SampleATLProjLib
 	{
 		[default] interface IFirstComponent;
 	};
+	[
+		uuid(ACC944F6-9B8D-4EAC-A48C-987AAE83327A)		
+	]
+	coclass MathComponent
+	{
+		[default] interface IMathComponent;
+	};
+	[
+		uuid(248CA032-6F01-4847-A617-8D5676AE5FFA)		
+	]
+	dispinterface _IEventComponentEvents
+	{
+		properties:
+		methods:
+			[id(1)]void Click();//This function will be implemented by UR Client.....
+			[id(2)]void Apple();
+	};
+	[
+		uuid(BE6B742C-2C6C-4D92-99A8-AFFE9ED55B54)		
+	]
+	coclass EventComponent
+	{
+		[default] interface IEventComponent;
+		[default, source] dispinterface _IEventComponentEvents;//Outgoing Interface.
+		//DIID__IEventComponentEvents
+	};
+	[
+		uuid(DA60728E-9777-4589-8205-E6F0BFD036EC)		
+	]
+	coclass NativeConsumer
+	{
+		[default] interface INativeConsumer;
+	};
 };
-
+//The outgoing interface is the group of callback methods that will be implemented by the Client who calls our COM object. The function acts like UR event handlers. In this example, Click is the event for which the client will implement an handler for the click event which we will invoke on a certain condition.  
+import "shobjidl.idl";

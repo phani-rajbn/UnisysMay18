@@ -113,7 +113,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <ModuleDefinitionFile>.\SampleATLProj.def</ModuleDefinitionFile>
-      <AdditionalDependencies>comsvcs.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>comsvcs.lib;"E:\Programs\UnisysComTraining\SampleAtlComProjects\Debug\NativeDll.lib";%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <RegisterOutput>true</RegisterOutput>
     </Link>
@@ -231,7 +231,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="EventComponent.cpp" />
     <ClCompile Include="FirstComponent.cpp" />
+    <ClCompile Include="MathComponent.cpp" />
+    <ClCompile Include="NativeConsumer.cpp" />
     <ClCompile Include="SampleATLProj.cpp" />
     <ClCompile Include="SampleATLProj_i.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
@@ -256,11 +259,15 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="dllmain.h" />
+    <ClInclude Include="EventComponent.h" />
     <ClInclude Include="FirstComponent.h" />
+    <ClInclude Include="MathComponent.h" />
+    <ClInclude Include="NativeConsumer.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="SampleATLProj_i.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="_IEventComponentEvents_CP.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="SampleATLProj.rc" />
@@ -269,7 +276,10 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="EventComponent.rgs" />
     <None Include="FirstComponent.rgs" />
+    <None Include="MathComponent.rgs" />
+    <None Include="NativeConsumer.rgs" />
     <None Include="SampleATLProj.def" />
     <None Include="SampleATLProj.rgs" />
   </ItemGroup>
