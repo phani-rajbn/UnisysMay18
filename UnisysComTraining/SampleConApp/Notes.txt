@@ -1,0 +1,47 @@
+COM: Component Object Model, a Technology since late 1990s to develop language independent and location transperant components that can be used in developing Windows Based Applications. COM is designed to make UR apps as much modular as possible so that U could replace any component with another without affecting the end Application. 
+Components created using COM technology are said to be language independent, which means that Apps that can understand COM in one form or the other can consume it in their Apps. 
+COM is implemented either as DLLs or EXEs. Most of the cases, it will be DLLs, COM Componenets exposed as DLLs are called as InProc Components.
+COM is primarily built in VC++ but can be built in VB 6.0 and Java. VB.NET is not VB 6.0.
+ Why COM?
+ COM provides a capability to access legacy code  as well system level programming. Talking to ports, Sockets are very simple and easy in traditional C++ Applications. Datagrams, Sockets, Named pipes are some of the traditional IPC Applications that were built for taking to hardware devices in C++.
+ Newer apps dont easily adapt to these older legacy infrastructure. So COM acts like wrapper bridge b/w the legacy components and the new apps that consume it. 
+ COM achieves 2 imp features required for interacting with other Components built in other languages: Language independency and Location transperancy
+
+ COM interfaces:
+ For Creating language independent Definitions for the interfaces, we use a langauge called MIDL(MS Interface Defn Language). The VC++ comes with a MIDL Compiler that compiles the IDL files to generate the TLBs and C style headers required for creating and consuming COM Components. 
+
+ Rules of Implementing COM Components:
+ 1. All COM interfaces are directly or indirectly derived from IUnknown interface. 
+ 2. All COM methods return a 32 Bit Error Code called HRESULT. UR Return type is fixed in COM..
+ 3. Any return values that U intend should be as references...
+ 4. All COM methods follow PASCAL Calling Convention(__stdcall).
+ 5. All interfaces are represented by a 128 Bit unique identifier called UUID(Universally Unique ID).
+ UUID: 60 bits: Ethernet card no, 40 Bits: TimeStamp and 28 Bit: Mother Board info of the system
+  6. UR Component Lib should implement 4 EXPORT Functions that COM library provides:
+  a. DllGetClassObject
+  b. DllCanUnloadNow
+  c. DllRegisterServer
+  d. DllUnregisterServer
+These functions will be called internally by the COM library. COM Library is a part of COM technology that is available inside the Windows OS since WinNT 4 and Win98. COM lib will call these export functions as and when its required. 
+COM Library will call DllGetClassObject when the client calls CoCreateInstance API.
+Clients will call DllCanUnloadNow if they want to release the Dll from the process. 
+COM lib will call DllRegisterSErver when client calls an API called regsvr32 to register COM Object.
+COM lib will call DllUnregisterServer when client calls regsvr32 -u uninstall option for unregistering COM objectgs.
+
+
+
+
+  Once the IDL file is compiled, the compiler generates certain files that are required for COM Component creation as well as usage. 
+  _h.h file: C/C++  Defns of the interfaces that we create.  
+  _i.c file: Defns for the IIDs and CLSIDs that 
+  .tlb file: Language independent Declarations of the interfaces and COM Components. U could use a tool called OLE-COM Object Viewer, a Win32 based App that allows to select a Tlb file and obtain the information about the components using RTTI.
+  
+  The other files like DllData.c, _p.c files are for Remote Access support for IPC. 
+
+  For Developing COM implementation class, we need the header files and .C files: _h.h and _i.c files. 
+
+
+
+
+
+ 

@@ -1,0 +1,32 @@
+import "oaidl.idl";
+import "ocidl.idl";//Importing the IDL for std interfaces of COM....
+
+[
+	object,
+	uuid(8B98A3BA-BC7F-4036-87DE-2E3A300DAB46)//Unique ID...
+]
+interface ISimple : IUnknown{
+	HRESULT SimpleFunc();
+};
+
+[
+	object,
+	uuid(3E3B1FDA-3601-4377-9A16-70AAEFC9095D)
+]
+interface IExample : IUnknown {
+	HRESULT ExampleFunc();
+};
+
+[
+	uuid(156E3765-2E91-4C4F-B2F4-96F25E2E41AF),
+	version(1.0)
+]
+library SampleComDlllib {
+	importlib("stdole32.tlb");
+
+	[uuid(DEFC49F5-F4C0-4574-A204-DC2E0C1FD8E4)]
+	coclass SimpleExample {
+		interface ISimple;
+		interface IExample;
+	};
+}

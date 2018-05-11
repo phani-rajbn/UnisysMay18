@@ -1,0 +1,26 @@
+HKCR
+{
+	SampleATLProj.FirstComponent.1 = s 'FirstComponent Class'
+	{
+		CLSID = s '{07F0CA23-B821-4D47-922C-5B9A3C9352B2}'
+	}
+	SampleATLProj.FirstComponent = s 'FirstComponent Class'
+	{		
+		CurVer = s 'SampleATLProj.FirstComponent.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {07F0CA23-B821-4D47-922C-5B9A3C9352B2} = s 'FirstComponent Class'
+		{
+			ProgID = s 'SampleATLProj.FirstComponent.1'
+			VersionIndependentProgID = s 'SampleATLProj.FirstComponent'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			TypeLib = s '{33F0CD1F-49B5-480C-8F46-E3208FD6B198}'
+			Version = s '1.0'
+		}
+	}
+}

@@ -1,0 +1,3 @@
+LIBRARY InnerComponent.dll
+EXPORTS
+DllGetClassObject PRIVATE;

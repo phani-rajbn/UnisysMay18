@@ -1,0 +1,35 @@
+// SampleATLProj.idl : IDL source for SampleATLProj
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (SampleATLProj.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(5E70BFC9-2A95-4633-88FC-7915771B3D57),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface IFirstComponent : IDispatch{
+	[id(1)] HRESULT AddNumbers([in] VARIANT theArray, [out] LONG* lResult);
+};
+[
+	uuid(33F0CD1F-49B5-480C-8F46-E3208FD6B198),
+	version(1.0),
+]
+library SampleATLProjLib
+{
+	importlib("stdole2.tlb");
+	[
+		uuid(07F0CA23-B821-4D47-922C-5B9A3C9352B2)		
+	]
+	coclass FirstComponent
+	{
+		[default] interface IFirstComponent;
+	};
+};
+

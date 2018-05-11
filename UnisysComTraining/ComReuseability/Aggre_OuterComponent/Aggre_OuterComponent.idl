@@ -1,0 +1,21 @@
+import "oaidl.idl";
+import "ocidl.idl";
+//While creating a Component that Supports Aggregation, the component should be aware that it will be reused by other Components. 
+[
+	object,
+	uuid(7D77A953-5C99-4AA0-926C-5EF215E212C1)
+]
+interface IAggreOuter : IUnknown {
+	HRESULT OuterMethod();
+};
+
+[
+	uuid(D52FE368-4B62-446A-BD62-F93E911FD729),
+	version(1.0)
+]
+library AggreOuterComponentLib {
+	[uuid(131F53C0-C3E3-4A4F-83DE-02A8C1F431B8)]
+	coclass AggreOuterComponent {
+		interface IAggreOuter;
+	};
+}

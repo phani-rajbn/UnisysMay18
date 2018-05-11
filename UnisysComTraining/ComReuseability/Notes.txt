@@ -1,0 +1,7 @@
+For Creating COM objects in C++ U should follow the following steps:
+1. Create the IDL file
+2. Implement the COM interfaces in a COM Component
+3. Implement a class Factory and instantiate COm object in the CreateInstance
+4. Provide the implementation of the EXPORT Functions of COM.
+5. Create the Module Defn file for the functions that U R exporting...
+6. Register the COM Component if U have not implemented DllRegisterServer.

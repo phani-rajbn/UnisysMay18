@@ -1,0 +1,34 @@
+import "oaidl.idl";
+import "ocidl.idl";
+
+[
+	object,
+	uuid(0F1D36F4-E836-4881-8558-BB7113C9A45D)
+]
+interface IMath1 : IUnknown {
+	HRESULT AddFunc(int iFirst, int iSecond, int* iRes);
+	HRESULT SubFunc(int iFirst, int iSecond, int* iRes);
+};
+
+[
+	object,
+	uuid(2E4C65D7-7EFA-4C79-BF74-81CF97CDB695)
+]
+interface IMath2 : IUnknown {
+	HRESULT MulFunc(int iFirst, int iSecond, int* iRes);
+	HRESULT DivFunc(int iFirst, int iSecond, int* iRes);
+};
+
+[
+	uuid(4235C24B-B5DA-456D-8299-13F088F338C0),
+	version(1.0)
+]
+library InnerComponentLib {
+	[
+		uuid(EA84B271-E211-47BA-9455-45CCB540E64C)
+	]
+	coclass MathComponent {
+		[default]interface IMath1;//default interface object for VB6 developers....
+		interface IMath2;
+	};
+}//ctrl+f7 for compiling the file...

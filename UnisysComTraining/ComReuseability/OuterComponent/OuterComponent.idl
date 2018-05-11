@@ -1,0 +1,26 @@
+import "../InnerComponent/InnerComponent.idl";
+
+[
+	object,
+	uuid(96E0A7F0-85D7-45B7-A5B8-A3C30B0029B9)
+]
+interface IMath3 : IUnknown {
+	HRESULT SqrFunc(int iFirst, int* iRes);
+	HRESULT SqrtFunc(int iFirst, int* iRes);
+};
+
+
+[
+	uuid(4235C24B-B5DA-456D-8299-13F088F338C0),
+	version(1.0)
+]
+library OuterComponentLib {
+	[
+		uuid(6E171CCC-C3E4-494B-8D11-BA01724C4F57)
+	]
+	coclass OuterMathComponent {
+		[default]interface IMath1;//default interface object for VB6 developers....
+		interface IMath2;
+		interface IMath3;
+	};
+}//ctrl+f7 for compiling the file...

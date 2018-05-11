@@ -1,0 +1,3 @@
+LIBRARY OuterComponent.dll
+EXPORTS
+DllGetClassObject PRIVATE;
